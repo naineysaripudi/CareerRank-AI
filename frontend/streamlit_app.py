@@ -42,6 +42,7 @@ st.markdown(
     }
 
     html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
+    html { scroll-behavior: smooth; }
     .stApp { background: var(--cr-bg); color: var(--cr-text); }
     .block-container { max-width: 1220px; padding: 1.25rem 2rem 1.75rem; }
     h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; letter-spacing: 0; }
@@ -61,7 +62,9 @@ st.markdown(
     [data-testid="stMetricValue"] { font-family: 'Space Grotesk', sans-serif; }
     .cr-nav { align-items: center; border-bottom: 1px solid var(--cr-border); display: flex; justify-content: space-between; margin-bottom: 1.4rem; padding: .25rem 0 .85rem; }
     .cr-brand { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; }
-    .cr-nav-links { color: var(--cr-muted); font-size: .78rem; letter-spacing: .02em; word-spacing: 1.1rem; }
+    .cr-nav-links { color: var(--cr-muted); display: flex; font-size: .78rem; gap: 1.1rem; letter-spacing: .02em; }
+    .cr-nav-links a { color: var(--cr-muted); text-decoration: none; }
+    .cr-nav-links a:hover { color: var(--cr-text); }
     .cr-hero { align-items: center; border-bottom: 1px solid var(--cr-border); display: flex; justify-content: space-between; margin-bottom: 1.4rem; padding-bottom: 1.35rem; }
     .cr-eyebrow { color: var(--cr-teal); font-size: .72rem; font-weight: 700; letter-spacing: .16em; margin-bottom: .55rem; }
     .cr-title { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: .98; }
@@ -117,7 +120,7 @@ default_location = "Remote" if "Remote" in location_options else location_option
 max_resume_size = settings.max_upload_size_mb * 1024 * 1024
 
 st.markdown(
-    '<div class="cr-nav"><div class="cr-brand">🚀 CareerRank AI</div><div class="cr-nav-links">Home Find Jobs Insights About</div><div class="cr-signal">● AI Matching Ready</div></div>',
+    '<div class="cr-nav"><div class="cr-brand">🚀 CareerRank AI</div><div class="cr-nav-links"><a href="#home">Home</a><a href="#find-jobs">Jobs</a><a href="#insights">Insights</a><a href="#about">About</a></div><div class="cr-signal">● AI Matching Ready</div></div>',
     unsafe_allow_html=True,
 )
 
@@ -125,7 +128,7 @@ hero_left, hero_right = st.columns([1.35, .85], gap="large")
 with hero_left:
     st.markdown(
         """
-        <div class="cr-hero">
+        <div id="home" class="cr-hero">
             <div>
                 <div class="cr-eyebrow">CAREER INTELLIGENCE / 01</div>
                 <div class="cr-title">CareerRank AI</div>
@@ -149,7 +152,7 @@ with hero_right:
         unsafe_allow_html=True,
     )
 
-st.markdown('<div class="cr-section">Candidate setup</div>', unsafe_allow_html=True)
+st.markdown('<div id="find-jobs" class="cr-section">Candidate setup</div>', unsafe_allow_html=True)
 upload_column, preference_column = st.columns([.9, 1.1], gap="medium")
 with upload_column:
     with st.container(border=True):
@@ -293,7 +296,7 @@ if "recommendation_results" in st.session_state:
             st.markdown(f'<div class="cr-panel cr-skill-card"><div class="cr-skill-card-title">Your strong skills</div>{skill_chips(strong_skills, "good")}</div>', unsafe_allow_html=True)
         with gap_columns[1]:
             st.markdown(f'<div class="cr-panel cr-skill-card"><div class="cr-skill-card-title warn">Skills to improve</div>{skill_chips(skills_to_improve, "warn")}</div>', unsafe_allow_html=True)
-        st.markdown('<div class="cr-section">📈 Career Insights</div>', unsafe_allow_html=True)
+        st.markdown('<div id="insights" class="cr-section">📈 Career Insights</div>', unsafe_allow_html=True)
         chart_columns = st.columns(2)
         with chart_columns[0]:
             score_chart = px.bar(result_frame, x="job_title", y="final_score", title="Match score by role", template="plotly_dark")
@@ -309,4 +312,4 @@ if "recommendation_results" in st.session_state:
                 gap_chart.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", yaxis_title="Jobs", xaxis_title=None)
                 st.plotly_chart(gap_chart, width="stretch")
 
-st.markdown('<div class="cr-footer"><strong>CareerRank AI</strong>Explainable &amp; Personalized Job Recommendations<br>Built with Python • Sentence Transformers • FAISS • FastAPI • Streamlit</div>', unsafe_allow_html=True)
+st.markdown('<div id="about" class="cr-footer"><strong>CareerRank AI</strong>Explainable &amp; Personalized Job Recommendations<br>Built with Python • Sentence Transformers • FAISS • FastAPI • Streamlit</div>', unsafe_allow_html=True)
