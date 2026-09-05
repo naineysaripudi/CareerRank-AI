@@ -43,7 +43,7 @@ st.markdown(
 
     html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
     .stApp { background: var(--cr-bg); color: var(--cr-text); }
-    .block-container { max-width: 1180px; padding: 3.5rem 2.5rem 2rem; }
+    .block-container { max-width: 1220px; padding: 1.25rem 2rem 1.75rem; }
     h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; letter-spacing: 0; }
     h2 { margin-top: 2rem; }
     [data-testid="stHeader"] { background: transparent; }
@@ -52,32 +52,40 @@ st.markdown(
     [data-testid="stTextArea"] textarea, [data-testid="stTextInput"] input,
     [data-baseweb="select"] > div { background: #151f2b; border-color: var(--cr-border); border-radius: 9px; }
     [data-testid="stTextArea"] textarea:focus, [data-testid="stTextInput"] input:focus { border-color: var(--cr-teal); }
-    [data-testid="stSlider"] [role="slider"] { background: var(--cr-coral); }
+    [data-testid="stSlider"] [role="slider"] { background: var(--cr-blue); }
     .stButton > button[kind="primary"] { background: linear-gradient(100deg, var(--cr-blue), var(--cr-purple)); border: 0; border-radius: 9px; color: #fff; font-weight: 700; min-height: 2.8rem; }
     .stButton > button[kind="primary"]:hover { background: linear-gradient(100deg, #86a0ff, #a276ff); color: #fff; }
     [data-testid="stExpander"] { background: #121a24; border: 1px solid var(--cr-border); border-radius: 10px; }
     [data-testid="stMetric"] { background: var(--cr-panel); border: 1px solid var(--cr-border); border-radius: 10px; padding: 1rem 1.1rem; }
     [data-testid="stMetricLabel"] { color: var(--cr-muted); }
     [data-testid="stMetricValue"] { font-family: 'Space Grotesk', sans-serif; }
-    .cr-hero { align-items: flex-end; border-bottom: 1px solid var(--cr-border); display: flex; justify-content: space-between; margin-bottom: 2.2rem; padding-bottom: 1.8rem; }
+    .cr-nav { align-items: center; border-bottom: 1px solid var(--cr-border); display: flex; justify-content: space-between; margin-bottom: 1.4rem; padding: .25rem 0 .85rem; }
+    .cr-brand { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; }
+    .cr-nav-links { color: var(--cr-muted); font-size: .78rem; letter-spacing: .02em; word-spacing: 1.1rem; }
+    .cr-hero { align-items: center; border-bottom: 1px solid var(--cr-border); display: flex; justify-content: space-between; margin-bottom: 1.4rem; padding-bottom: 1.35rem; }
     .cr-eyebrow { color: var(--cr-teal); font-size: .72rem; font-weight: 700; letter-spacing: .16em; margin-bottom: .55rem; }
-    .cr-title { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 700; line-height: .98; }
-    .cr-subtitle { color: var(--cr-muted); font-size: 1rem; margin-top: .8rem; }
-    .cr-description { color: #c0ccda; font-size: .92rem; line-height: 1.6; margin-top: .9rem; max-width: 650px; }
-    .cr-features { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+    .cr-title { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: .98; }
+    .cr-subtitle { color: var(--cr-muted); font-size: .94rem; margin-top: .55rem; }
+    .cr-description { color: #c0ccda; font-size: .84rem; line-height: 1.5; margin-top: .65rem; max-width: 610px; }
+    .cr-features { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
     .cr-feature { background: #131e2d; border: 1px solid #2b3b57; border-radius: 999px; color: #cbd7f0; font-size: .76rem; padding: .4rem .65rem; }
-    .cr-signal { background: #102a2b; border: 1px solid #1e5e5a; border-radius: 999px; color: #8ce4d4; font-size: .8rem; padding: .55rem .8rem; }
-    .cr-section { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 600; margin: 2rem 0 1rem; }
-    .cr-section-note { color: var(--cr-muted); font-size: .86rem; margin-top: -.65rem; margin-bottom: 1rem; }
-    .cr-panel { background: var(--cr-panel); border: 1px solid var(--cr-border); border-radius: 12px; padding: 1.25rem; }
+    .cr-signal { background: #102a2b; border: 1px solid #1e5e5a; border-radius: 999px; color: #8ce4d4; font-size: .75rem; padding: .45rem .7rem; }
+    .cr-hero-visual { background: #101923; border: 1px solid #2b3b57; border-radius: 12px; padding: .8rem; }
+    .cr-flow-title { color: var(--cr-muted); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+    .cr-flow { align-items: center; display: flex; gap: .35rem; margin-top: .55rem; }
+    .cr-flow-card { background: #172538; border: 1px solid #334b6b; border-radius: 8px; color: #dbe6f8; font-size: .72rem; padding: .6rem .65rem; text-align: center; }
+    .cr-flow-arrow { color: var(--cr-teal); font-size: .85rem; }
+    .cr-section { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; margin: 1.25rem 0 .65rem; }
+    .cr-section-note { color: var(--cr-muted); font-size: .78rem; margin-top: -.35rem; margin-bottom: .7rem; }
+    .cr-panel { background: var(--cr-panel); border: 1px solid var(--cr-border); border-radius: 10px; padding: .95rem; }
     .cr-panel-title { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: .25rem; }
     .cr-panel-note { color: var(--cr-muted); font-size: .82rem; }
-    .cr-job-head { align-items: center; display: flex; gap: 1rem; justify-content: space-between; padding: .25rem 0 .6rem; }
+    .cr-job-head { align-items: center; display: flex; gap: .75rem; justify-content: space-between; padding: .05rem 0 .45rem; }
     .cr-job-rank { color: var(--cr-blue); font-size: .75rem; font-weight: 700; letter-spacing: .1em; }
     .cr-job-title { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 600; }
     .cr-company { color: var(--cr-muted); font-size: .88rem; margin-top: .15rem; }
-    .cr-score { color: var(--cr-teal); font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; white-space: nowrap; }
-    .cr-meta { color: var(--cr-muted); display: flex; flex-wrap: wrap; font-size: .82rem; gap: .5rem 1rem; padding: .4rem 0 .65rem; }
+    .cr-score { color: var(--cr-teal); font-family: 'Space Grotesk', sans-serif; font-size: 1.55rem; font-weight: 700; white-space: nowrap; }
+    .cr-meta { color: var(--cr-muted); display: flex; flex-wrap: wrap; font-size: .76rem; gap: .4rem .75rem; padding: .3rem 0 .45rem; }
     .cr-meta span::before { color: var(--cr-teal); content: '•'; margin-right: .35rem; }
     .cr-chip { background: #1c2b38; border: 1px solid #2c4153; border-radius: 999px; color: #c9d6e3; display: inline-block; font-size: .75rem; margin: .18rem .25rem .18rem 0; padding: .28rem .55rem; }
     .cr-chip.good { background: #12302d; border-color: #23665e; color: #8ce4d4; }
@@ -87,14 +95,14 @@ st.markdown(
     .cr-breakdown-item { background: #101923; border: 1px solid #213244; border-radius: 8px; padding: .65rem .75rem; }
     .cr-breakdown-label { color: var(--cr-muted); font-size: .78rem; }
     .cr-breakdown-value { color: var(--cr-text); font-weight: 600; margin-top: .2rem; }
-    .cr-filter { align-items: center; background: #101923; border: 1px solid var(--cr-border); border-radius: 10px; display: flex; justify-content: space-between; padding: .7rem 1rem .2rem; }
+    .cr-filter { align-items: center; background: #101923; border: 1px solid var(--cr-border); border-radius: 10px; display: flex; justify-content: space-between; padding: .55rem .85rem .1rem; }
     .cr-filter-value { color: var(--cr-blue); font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; }
     .cr-skill-card { min-height: 9rem; }
     .cr-skill-card-title { color: var(--cr-teal); font-size: .76rem; font-weight: 700; letter-spacing: .1em; margin-bottom: .55rem; text-transform: uppercase; }
     .cr-skill-card-title.warn { color: var(--cr-yellow); }
     .cr-footer { border-top: 1px solid var(--cr-border); color: #73859a; font-size: .78rem; margin-top: 3rem; padding: 1.5rem 0 .5rem; text-align: center; }
     .cr-footer strong { color: #c0ccda; display: block; font-family: 'Space Grotesk', sans-serif; font-size: .9rem; margin-bottom: .3rem; }
-    @media (max-width: 700px) { .block-container { padding: 2rem 1rem 1rem; } .cr-hero { align-items: flex-start; flex-direction: column; gap: 1rem; } .cr-breakdown { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) { .block-container { padding: 1rem .8rem 1rem; } .cr-nav-links { display: none; } .cr-hero { align-items: flex-start; flex-direction: column; gap: .9rem; } .cr-breakdown { grid-template-columns: 1fr; } }
     </style>
     """,
     unsafe_allow_html=True,
@@ -109,47 +117,66 @@ default_location = "Remote" if "Remote" in location_options else location_option
 max_resume_size = settings.max_upload_size_mb * 1024 * 1024
 
 st.markdown(
-    """
-    <div class="cr-hero">
-        <div>
-            <div class="cr-eyebrow">CAREER INTELLIGENCE / 01</div>
-            <div class="cr-title">CareerRank AI</div>
-            <div class="cr-subtitle">Explainable, personalized job discovery</div>
-            <div class="cr-description">Upload your resume, set your career preferences, and discover job opportunities ranked according to your skills and preferences.</div>
-            <div class="cr-features"><span class="cr-feature">✦ AI-Powered Matching</span><span class="cr-feature">◈ Personalized Recommendations</span><span class="cr-feature">◎ Explainable Results</span></div>
-        </div>
-        <div class="cr-signal">● Matching engine ready</div>
-    </div>
-    """,
+    '<div class="cr-nav"><div class="cr-brand">🚀 CareerRank AI</div><div class="cr-nav-links">Home Find Jobs Insights About</div><div class="cr-signal">● AI Matching Ready</div></div>',
     unsafe_allow_html=True,
 )
 
-st.markdown('<div class="cr-section">📄 Upload Your Resume</div>', unsafe_allow_html=True)
-st.markdown('<div class="cr-section-note">Upload a resume or paste your experience, then tune the preferences that matter to you.</div>', unsafe_allow_html=True)
-st.markdown('<div class="cr-panel"><div class="cr-panel-title">Resume signal</div><div class="cr-panel-note">PDF only • Maximum ' + str(settings.max_upload_size_mb) + ' MB</div></div>', unsafe_allow_html=True)
-uploaded_file = st.file_uploader("Upload resume PDF", type=["pdf"], label_visibility="collapsed")
-resume_text = ""
-if uploaded_file:
-    if uploaded_file.size > max_resume_size:
-        st.error(f"This resume is larger than the {settings.max_upload_size_mb} MB application limit.")
-    else:
-        try:
-            resume_text = extract_text_from_pdf_bytes(uploaded_file.getvalue())
-            st.caption(f"Loaded {uploaded_file.name}")
-        except Exception as error:
-            st.error(str(error))
-resume_text = st.text_area("Resume text", value=resume_text, height=150, placeholder="Upload a PDF or paste resume text...", label_visibility="collapsed")
+hero_left, hero_right = st.columns([1.35, .85], gap="large")
+with hero_left:
+    st.markdown(
+        """
+        <div class="cr-hero">
+            <div>
+                <div class="cr-eyebrow">CAREER INTELLIGENCE / 01</div>
+                <div class="cr-title">CareerRank AI</div>
+                <div class="cr-subtitle">Explainable, personalized job discovery</div>
+                <div class="cr-description">Upload your resume, set your career preferences, and discover job opportunities ranked according to your skills and preferences.</div>
+                <div class="cr-features"><span class="cr-feature">✦ AI-Powered Matching</span><span class="cr-feature">◈ Personalized Recommendations</span><span class="cr-feature">◎ Explainable Results</span></div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+with hero_right:
+    st.markdown(
+        """
+        <div class="cr-hero-visual">
+            <div class="cr-flow-title">Live matching pipeline</div>
+            <div class="cr-flow"><div class="cr-flow-card">Resume<br><small>uploaded</small></div><div class="cr-flow-arrow">→</div><div class="cr-flow-card">Skills<br><small>extracted</small></div><div class="cr-flow-arrow">→</div><div class="cr-flow-card">Jobs<br><small>ranked</small></div></div>
+            <div class="cr-panel-note" style="margin-top:.65rem">Personalized ranking is ready for your preferences.</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-st.markdown('<div class="cr-section">🎯 Your Career Preferences</div>', unsafe_allow_html=True)
-st.markdown('<div class="cr-section-note">These preferences are used directly by the personalized ranking model.</div>', unsafe_allow_html=True)
-left, right = st.columns(2)
-with left:
-    target_role_selection = st.selectbox("Target role", role_options, index=role_options.index(default_role))
-    location_selection = st.selectbox("Preferred location", location_options, index=location_options.index(default_location))
-with right:
-    experience_selection = st.selectbox("Experience level", ["Any experience", "Entry", "Mid", "Senior"])
-    employment_selection = st.selectbox("Employment type", ["Any employment type", "Full-time", "Contract", "Hybrid"])
-additional_skills = st.text_input("Additional skills", placeholder="Add skills separated by commas, e.g. Docker, AWS")
+st.markdown('<div class="cr-section">Candidate setup</div>', unsafe_allow_html=True)
+upload_column, preference_column = st.columns([.9, 1.1], gap="medium")
+with upload_column:
+    with st.container(border=True):
+        st.markdown('<div class="cr-panel-title">📄 Upload Your Resume</div><div class="cr-panel-note">PDF only • Maximum ' + str(settings.max_upload_size_mb) + ' MB</div>', unsafe_allow_html=True)
+        uploaded_file = st.file_uploader("Upload resume PDF", type=["pdf"], label_visibility="collapsed")
+        resume_text = ""
+        if uploaded_file:
+            if uploaded_file.size > max_resume_size:
+                st.error(f"This resume is larger than the {settings.max_upload_size_mb} MB application limit.")
+            else:
+                try:
+                    resume_text = extract_text_from_pdf_bytes(uploaded_file.getvalue())
+                    st.caption(f"Loaded {uploaded_file.name}")
+                except Exception as error:
+                    st.error(str(error))
+        resume_text = st.text_area("Resume text", value=resume_text, height=112, placeholder="Or paste resume text here...", label_visibility="collapsed")
+with preference_column:
+    with st.container(border=True):
+        st.markdown('<div class="cr-panel-title">🎯 Career Preferences</div><div class="cr-panel-note">Tune the factors used by personalized ranking.</div>', unsafe_allow_html=True)
+        preference_left, preference_right = st.columns(2)
+        with preference_left:
+            target_role_selection = st.selectbox("Target role", role_options, index=role_options.index(default_role))
+            location_selection = st.selectbox("Preferred location", location_options, index=location_options.index(default_location))
+        with preference_right:
+            experience_selection = st.selectbox("Experience level", ["Any experience", "Entry", "Mid", "Senior"])
+            employment_selection = st.selectbox("Employment type", ["Any employment type", "Full-time", "Contract", "Hybrid"])
+        additional_skills = st.text_input("Additional skills", placeholder="Docker, AWS, Kubernetes")
 
 target_role = "" if target_role_selection == "Any Role" else target_role_selection
 location = "" if location_selection == "Any Location" else location_selection
@@ -177,7 +204,11 @@ def skill_chips(skills: list[str], style: str) -> str:
 
 if "recommendation_results" in st.session_state:
     results = st.session_state.recommendation_results
-    minimum_score = st.slider("Minimum match score", 0, 100, 0, key="minimum_score")
+    threshold_label, threshold_control = st.columns([.55, 1.45], gap="medium")
+    with threshold_label:
+        st.markdown('<div class="cr-panel-title">Minimum Match Score</div><div class="cr-panel-note">Filter ranked jobs by their actual final score.</div>', unsafe_allow_html=True)
+    with threshold_control:
+        minimum_score = st.slider("Minimum Match Score", 0, 100, 0, key="minimum_score", label_visibility="collapsed")
     filtered_results = [job for job in results if job["final_score"] >= minimum_score]
     average_score = sum(job["final_score"] for job in filtered_results) / max(1, len(filtered_results))
 
@@ -192,54 +223,56 @@ if "recommendation_results" in st.session_state:
         f'<div class="cr-filter"><span>Showing ranked jobs at or above your threshold</span><span class="cr-filter-value">{minimum_score}%</span></div>',
         unsafe_allow_html=True,
     )
-    st.markdown(f'<div class="cr-section">💼 Top Job Recommendations <span class="cr-panel-note">({len(filtered_results)} shown)</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="cr-section">🔥 Top Job Matches <span class="cr-panel-note">({len(filtered_results)} shown)</span></div>', unsafe_allow_html=True)
     result_frame = pd.DataFrame(filtered_results)
     ranking_config = RankingConfig()
+    recommendation_columns = st.columns(2, gap="medium")
 
-    for job in filtered_results:
-        final_score = float(job["final_score"])
-        st.markdown(
-            f"""
-            <div class="cr-panel">
-                <div class="cr-job-head">
-                    <div><div class="cr-job-rank">RANK #{job['rank']:02d}</div><div class="cr-job-title">{html.escape(str(job['job_title']))}</div><div class="cr-company">{html.escape(str(job['company']))}</div></div>
-                    <div class="cr-score">{final_score:.0f}%</div>
+    for index, job in enumerate(filtered_results):
+        with recommendation_columns[index % 2]:
+            final_score = float(job["final_score"])
+            st.markdown(
+                f"""
+                <div class="cr-panel">
+                    <div class="cr-job-head">
+                        <div><div class="cr-job-rank">RANK #{job['rank']:02d}</div><div class="cr-job-title">{html.escape(str(job['job_title']))}</div><div class="cr-company">{html.escape(str(job['company']))}</div></div>
+                        <div class="cr-score">{final_score:.0f}% <small>MATCH</small></div>
+                    </div>
+                    <div class="cr-meta"><span>{html.escape(str(job['location']))}</span><span>{html.escape(str(job['employment_type']))}</span><span>{html.escape(str(job['experience_level']))}</span></div>
+                    <div class="cr-skill-label">Matching skills</div>
+                    <div>{skill_chips(job.get('matching_skills', []), 'good')}</div>
+                    <div class="cr-skill-label">Skills to improve</div>
+                    <div>{skill_chips(job.get('missing_skills', []), 'warn')}</div>
                 </div>
-                <div class="cr-meta"><span>{html.escape(str(job['location']))}</span><span>{html.escape(str(job['experience_level']))}</span><span>{html.escape(str(job['employment_type']))}</span></div>
-                <div class="cr-skill-label">Your strong skills</div>
-                <div>{skill_chips(job.get('matching_skills', []), 'good')}</div>
-                <div class="cr-skill-label">Skills to improve</div>
-                <div>{skill_chips(job.get('missing_skills', []), 'warn')}</div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-        st.progress(min(max(final_score / 100, 0.0), 1.0), text=f"Overall match score: {final_score:.2f}%")
-        with st.expander("Why this job?"):
-            st.write(job["explanation"]["summary"])
-            st.caption(job["explanation"]["confidence_note"])
-        with st.expander("View skill details"):
-            gap = job.get("skill_gap", {})
-            st.markdown("**Matching skills**")
-            st.markdown(skill_chips(gap.get("strong_skills", job.get("matching_skills", [])), "good"), unsafe_allow_html=True)
-            st.markdown("**Missing required skills**")
-            st.markdown(skill_chips(gap.get("missing_required_skills", job.get("missing_skills", [])), "warn"), unsafe_allow_html=True)
-            st.markdown("**Missing preferred skills**")
-            st.markdown(skill_chips(gap.get("missing_preferred_skills", []), ""), unsafe_allow_html=True)
-        with st.expander("View match-score breakdown"):
-            breakdown = [
-                ("Semantic similarity", "semantic_similarity", ranking_config.semantic_weight),
-                ("Skill match", "skill_match", ranking_config.skill_weight),
-                ("Experience", "experience_match", ranking_config.experience_weight),
-                ("Role", "role_match", ranking_config.role_weight),
-                ("Location", "location_match", ranking_config.location_weight),
-                ("Employment", "employment_match", ranking_config.employment_weight),
-            ]
-            breakdown_html = "".join(
-                f'<div class="cr-breakdown-item"><div class="cr-breakdown-label">{label} · {weight:.0%} weight</div><div class="cr-breakdown-value">{float(job.get(key, 0.0)) * 100:.0f}% match</div></div>'
-                for label, key, weight in breakdown
+                """,
+                unsafe_allow_html=True,
             )
-            st.markdown(f'<div class="cr-breakdown">{breakdown_html}</div>', unsafe_allow_html=True)
+            st.progress(min(max(final_score / 100, 0.0), 1.0), text=f"Match score: {final_score:.2f}%")
+            with st.expander("View Match Details"):
+                st.markdown("**💡 Why this job?**")
+                st.write(job["explanation"]["summary"])
+                st.caption(job["explanation"]["confidence_note"])
+                gap = job.get("skill_gap", {})
+                st.markdown("**Matching skills**")
+                st.markdown(skill_chips(gap.get("strong_skills", job.get("matching_skills", [])), "good"), unsafe_allow_html=True)
+                st.markdown("**Missing required skills**")
+                st.markdown(skill_chips(gap.get("missing_required_skills", job.get("missing_skills", [])), "warn"), unsafe_allow_html=True)
+                st.markdown("**Missing preferred skills**")
+                st.markdown(skill_chips(gap.get("missing_preferred_skills", []), ""), unsafe_allow_html=True)
+                st.markdown("**📊 Match Score Breakdown**")
+                breakdown = [
+                    ("Semantic similarity", "semantic_similarity", ranking_config.semantic_weight),
+                    ("Skill match", "skill_match", ranking_config.skill_weight),
+                    ("Experience", "experience_match", ranking_config.experience_weight),
+                    ("Role", "role_match", ranking_config.role_weight),
+                    ("Location", "location_match", ranking_config.location_weight),
+                    ("Employment", "employment_match", ranking_config.employment_weight),
+                ]
+                breakdown_html = "".join(
+                    f'<div class="cr-breakdown-item"><div class="cr-breakdown-label">{label} · {weight:.0%} weight</div><div class="cr-breakdown-value">{float(job.get(key, 0.0)) * 100:.0f}% match</div></div>'
+                    for label, key, weight in breakdown
+                )
+                st.markdown(f'<div class="cr-breakdown">{breakdown_html}</div>', unsafe_allow_html=True)
 
     if not filtered_results:
         st.info("No recommendations meet this minimum match score. Lower the threshold to see more ranked jobs.")
@@ -253,7 +286,7 @@ if "recommendation_results" in st.session_state:
             st.markdown(f'<div class="cr-panel cr-skill-card"><div class="cr-skill-card-title">Your strong skills</div>{skill_chips(strong_skills, "good")}</div>', unsafe_allow_html=True)
         with gap_columns[1]:
             st.markdown(f'<div class="cr-panel cr-skill-card"><div class="cr-skill-card-title warn">Skills to improve</div>{skill_chips(skills_to_improve, "warn")}</div>', unsafe_allow_html=True)
-        st.markdown('<div class="cr-section">Match insights</div>', unsafe_allow_html=True)
+        st.markdown('<div class="cr-section">📈 Career Insights</div>', unsafe_allow_html=True)
         chart_columns = st.columns(2)
         with chart_columns[0]:
             score_chart = px.bar(result_frame, x="job_title", y="final_score", title="Match score by role", template="plotly_dark")
