@@ -2,6 +2,10 @@
 
 CareerRank AI is an explainable job recommendation system built around resume NLP, sentence embeddings, FAISS retrieval, transparent personalized ranking, skill-gap analysis, and optional LLM explanations.
 
+## Live Demo
+
+[Open CareerRank AI](https://careerrank-ai-qf76rbgebrwajhvxqqbyli.streamlit.app)
+
 ## Current status
 
 The working prototype includes resume PDF extraction, controlled skill normalization, sentence-transformer embeddings, persistent FAISS retrieval, transparent personalized ranking, skill-gap analysis, deterministic explanations, FastAPI endpoints, Streamlit visualization, and a reproducible synthetic evaluation.
