@@ -1,5 +1,14 @@
 """Streamlit demo interface for CareerRank AI."""
 
+import sys
+from pathlib import Path
+
+# Streamlit Cloud runs this file from frontend/, so make the repository root
+# importable before loading the application package.
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 import streamlit as st
 
 import pandas as pd
