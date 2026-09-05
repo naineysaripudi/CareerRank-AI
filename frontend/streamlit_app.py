@@ -154,18 +154,25 @@ upload_column, preference_column = st.columns([.9, 1.1], gap="medium")
 with upload_column:
     with st.container(border=True):
         st.markdown('<div class="cr-panel-title">📄 Upload Your Resume</div><div class="cr-panel-note">PDF only • Maximum ' + str(settings.max_upload_size_mb) + ' MB</div>', unsafe_allow_html=True)
-        uploaded_file = st.file_uploader("Upload resume PDF", type=["pdf"], label_visibility="collapsed")
-        resume_text = ""
+        if "resume_text" not in st.session_state:
+            st.session_state.resume_text = ""
+        uploaded_file = st.file_uploader("Upload resume PDF", type=["pdf"], label_visibility="collapsed", key="resume_upload")
         if uploaded_file:
-            if uploaded_file.size > max_resume_size:
-                st.error(f"This resume is larger than the {settings.max_upload_size_mb} MB application limit.")
-            else:
-                try:
-                    resume_text = extract_text_from_pdf_bytes(uploaded_file.getvalue())
-                    st.caption(f"Loaded {uploaded_file.name}")
-                except Exception as error:
-                    st.error(str(error))
-        resume_text = st.text_area("Resume text", value=resume_text, height=112, placeholder="Or paste resume text here...", label_visibility="collapsed")
+            upload_signature = (uploaded_file.name, uploaded_file.size)
+            if upload_signature != st.session_state.get("resume_upload_signature"):
+                st.session_state.resume_upload_signature = upload_signature
+                if uploaded_file.size > max_resume_size:
+                    st.session_state.resume_text = ""
+                    st.error(f"This resume is larger than the {settings.max_upload_size_mb} MB application limit.")
+                else:
+                    try:
+                        st.session_state.resume_text = extract_text_from_pdf_bytes(uploaded_file.getvalue())
+                    except Exception as error:
+                        st.session_state.resume_text = ""
+                        st.error(str(error))
+        if uploaded_file and st.session_state.resume_text:
+            st.caption(f"Loaded {uploaded_file.name}")
+        resume_text = st.text_area("Resume text", height=112, placeholder="Or paste resume text here...", label_visibility="collapsed", key="resume_text")
 with preference_column:
     with st.container(border=True):
         st.markdown('<div class="cr-panel-title">🎯 Career Preferences</div><div class="cr-panel-note">Tune the factors used by personalized ranking.</div>', unsafe_allow_html=True)
