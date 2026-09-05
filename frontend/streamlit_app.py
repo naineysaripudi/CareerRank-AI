@@ -35,7 +35,8 @@ st.markdown(
         --cr-border: #263547;
         --cr-text: #f3f7fb;
         --cr-muted: #93a4b8;
-        --cr-coral: #f47d63;
+        --cr-blue: #6f8cff;
+        --cr-purple: #8b5cf6;
         --cr-teal: #38c8b2;
         --cr-yellow: #f3c969;
     }
@@ -52,8 +53,8 @@ st.markdown(
     [data-baseweb="select"] > div { background: #151f2b; border-color: var(--cr-border); border-radius: 9px; }
     [data-testid="stTextArea"] textarea:focus, [data-testid="stTextInput"] input:focus { border-color: var(--cr-teal); }
     [data-testid="stSlider"] [role="slider"] { background: var(--cr-coral); }
-    .stButton > button[kind="primary"] { background: var(--cr-coral); border: 0; border-radius: 9px; color: #1b1110; font-weight: 700; min-height: 2.8rem; }
-    .stButton > button[kind="primary"]:hover { background: #ff927a; color: #1b1110; }
+    .stButton > button[kind="primary"] { background: linear-gradient(100deg, var(--cr-blue), var(--cr-purple)); border: 0; border-radius: 9px; color: #fff; font-weight: 700; min-height: 2.8rem; }
+    .stButton > button[kind="primary"]:hover { background: linear-gradient(100deg, #86a0ff, #a276ff); color: #fff; }
     [data-testid="stExpander"] { background: #121a24; border: 1px solid var(--cr-border); border-radius: 10px; }
     [data-testid="stMetric"] { background: var(--cr-panel); border: 1px solid var(--cr-border); border-radius: 10px; padding: 1rem 1.1rem; }
     [data-testid="stMetricLabel"] { color: var(--cr-muted); }
@@ -62,6 +63,9 @@ st.markdown(
     .cr-eyebrow { color: var(--cr-teal); font-size: .72rem; font-weight: 700; letter-spacing: .16em; margin-bottom: .55rem; }
     .cr-title { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 700; line-height: .98; }
     .cr-subtitle { color: var(--cr-muted); font-size: 1rem; margin-top: .8rem; }
+    .cr-description { color: #c0ccda; font-size: .92rem; line-height: 1.6; margin-top: .9rem; max-width: 650px; }
+    .cr-features { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+    .cr-feature { background: #131e2d; border: 1px solid #2b3b57; border-radius: 999px; color: #cbd7f0; font-size: .76rem; padding: .4rem .65rem; }
     .cr-signal { background: #102a2b; border: 1px solid #1e5e5a; border-radius: 999px; color: #8ce4d4; font-size: .8rem; padding: .55rem .8rem; }
     .cr-section { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 600; margin: 2rem 0 1rem; }
     .cr-section-note { color: var(--cr-muted); font-size: .86rem; margin-top: -.65rem; margin-bottom: 1rem; }
@@ -69,7 +73,7 @@ st.markdown(
     .cr-panel-title { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: .25rem; }
     .cr-panel-note { color: var(--cr-muted); font-size: .82rem; }
     .cr-job-head { align-items: center; display: flex; gap: 1rem; justify-content: space-between; padding: .25rem 0 .6rem; }
-    .cr-job-rank { color: var(--cr-coral); font-size: .75rem; font-weight: 700; letter-spacing: .1em; }
+    .cr-job-rank { color: var(--cr-blue); font-size: .75rem; font-weight: 700; letter-spacing: .1em; }
     .cr-job-title { color: var(--cr-text); font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 600; }
     .cr-company { color: var(--cr-muted); font-size: .88rem; margin-top: .15rem; }
     .cr-score { color: var(--cr-teal); font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; white-space: nowrap; }
@@ -84,8 +88,12 @@ st.markdown(
     .cr-breakdown-label { color: var(--cr-muted); font-size: .78rem; }
     .cr-breakdown-value { color: var(--cr-text); font-weight: 600; margin-top: .2rem; }
     .cr-filter { align-items: center; background: #101923; border: 1px solid var(--cr-border); border-radius: 10px; display: flex; justify-content: space-between; padding: .7rem 1rem .2rem; }
-    .cr-filter-value { color: var(--cr-coral); font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; }
+    .cr-filter-value { color: var(--cr-blue); font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; }
+    .cr-skill-card { min-height: 9rem; }
+    .cr-skill-card-title { color: var(--cr-teal); font-size: .76rem; font-weight: 700; letter-spacing: .1em; margin-bottom: .55rem; text-transform: uppercase; }
+    .cr-skill-card-title.warn { color: var(--cr-yellow); }
     .cr-footer { border-top: 1px solid var(--cr-border); color: #73859a; font-size: .78rem; margin-top: 3rem; padding: 1.5rem 0 .5rem; text-align: center; }
+    .cr-footer strong { color: #c0ccda; display: block; font-family: 'Space Grotesk', sans-serif; font-size: .9rem; margin-bottom: .3rem; }
     @media (max-width: 700px) { .block-container { padding: 2rem 1rem 1rem; } .cr-hero { align-items: flex-start; flex-direction: column; gap: 1rem; } .cr-breakdown { grid-template-columns: 1fr; } }
     </style>
     """,
@@ -107,6 +115,8 @@ st.markdown(
             <div class="cr-eyebrow">CAREER INTELLIGENCE / 01</div>
             <div class="cr-title">CareerRank AI</div>
             <div class="cr-subtitle">Explainable, personalized job discovery</div>
+            <div class="cr-description">Upload your resume, set your career preferences, and discover job opportunities ranked according to your skills and preferences.</div>
+            <div class="cr-features"><span class="cr-feature">✦ AI-Powered Matching</span><span class="cr-feature">◈ Personalized Recommendations</span><span class="cr-feature">◎ Explainable Results</span></div>
         </div>
         <div class="cr-signal">● Matching engine ready</div>
     </div>
@@ -114,9 +124,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.markdown('<div class="cr-section">Build your candidate profile</div>', unsafe_allow_html=True)
+st.markdown('<div class="cr-section">📄 Upload Your Resume</div>', unsafe_allow_html=True)
 st.markdown('<div class="cr-section-note">Upload a resume or paste your experience, then tune the preferences that matter to you.</div>', unsafe_allow_html=True)
-st.markdown('<div class="cr-panel"><div class="cr-panel-title">Resume signal</div><div class="cr-panel-note">PDF resumes are supported. Application upload limit: ' + str(settings.max_upload_size_mb) + ' MB.</div></div>', unsafe_allow_html=True)
+st.markdown('<div class="cr-panel"><div class="cr-panel-title">Resume signal</div><div class="cr-panel-note">PDF only • Maximum ' + str(settings.max_upload_size_mb) + ' MB</div></div>', unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Upload resume PDF", type=["pdf"], label_visibility="collapsed")
 resume_text = ""
 if uploaded_file:
@@ -130,7 +140,7 @@ if uploaded_file:
             st.error(str(error))
 resume_text = st.text_area("Resume text", value=resume_text, height=150, placeholder="Upload a PDF or paste resume text...", label_visibility="collapsed")
 
-st.markdown('<div class="cr-section">Career preferences</div>', unsafe_allow_html=True)
+st.markdown('<div class="cr-section">🎯 Your Career Preferences</div>', unsafe_allow_html=True)
 st.markdown('<div class="cr-section-note">These preferences are used directly by the personalized ranking model.</div>', unsafe_allow_html=True)
 left, right = st.columns(2)
 with left:
@@ -146,7 +156,7 @@ location = "" if location_selection == "Any Location" else location_selection
 experience_level = "" if experience_selection == "Any experience" else experience_selection
 employment_type = "" if employment_selection == "Any employment type" else employment_selection
 
-find_jobs = st.button("Find my best jobs  →", type="primary", disabled=not resume_text.strip(), width="stretch")
+find_jobs = st.button("🔍 Find My Best Jobs", type="primary", disabled=not resume_text.strip(), width="stretch")
 if find_jobs:
     with st.spinner("Extracting profile, retrieving jobs, and calculating matches..."):
         st.session_state.recommendation_results = run_demo_recommendation({
@@ -171,7 +181,7 @@ if "recommendation_results" in st.session_state:
     filtered_results = [job for job in results if job["final_score"] >= minimum_score]
     average_score = sum(job["final_score"] for job in filtered_results) / max(1, len(filtered_results))
 
-    st.markdown('<div class="cr-section">Recommendation summary</div>', unsafe_allow_html=True)
+    st.markdown('<div class="cr-section">📊 Recommendation Summary</div>', unsafe_allow_html=True)
     summary_columns = st.columns(4)
     summary_columns[0].metric("Jobs analyzed", len(job_catalog))
     summary_columns[1].metric("Jobs retrieved", settings.top_k_retrieval)
@@ -182,7 +192,7 @@ if "recommendation_results" in st.session_state:
         f'<div class="cr-filter"><span>Showing ranked jobs at or above your threshold</span><span class="cr-filter-value">{minimum_score}%</span></div>',
         unsafe_allow_html=True,
     )
-    st.markdown(f'<div class="cr-section">Top {len(filtered_results)} recommendations</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="cr-section">💼 Top Job Recommendations <span class="cr-panel-note">({len(filtered_results)} shown)</span></div>', unsafe_allow_html=True)
     result_frame = pd.DataFrame(filtered_results)
     ranking_config = RankingConfig()
 
@@ -208,6 +218,14 @@ if "recommendation_results" in st.session_state:
         with st.expander("Why this job?"):
             st.write(job["explanation"]["summary"])
             st.caption(job["explanation"]["confidence_note"])
+        with st.expander("View skill details"):
+            gap = job.get("skill_gap", {})
+            st.markdown("**Matching skills**")
+            st.markdown(skill_chips(gap.get("strong_skills", job.get("matching_skills", [])), "good"), unsafe_allow_html=True)
+            st.markdown("**Missing required skills**")
+            st.markdown(skill_chips(gap.get("missing_required_skills", job.get("missing_skills", [])), "warn"), unsafe_allow_html=True)
+            st.markdown("**Missing preferred skills**")
+            st.markdown(skill_chips(gap.get("missing_preferred_skills", []), ""), unsafe_allow_html=True)
         with st.expander("View match-score breakdown"):
             breakdown = [
                 ("Semantic similarity", "semantic_similarity", ranking_config.semantic_weight),
@@ -227,6 +245,14 @@ if "recommendation_results" in st.session_state:
         st.info("No recommendations meet this minimum match score. Lower the threshold to see more ranked jobs.")
 
     if not result_frame.empty:
+        strong_skills = sorted({skill for job in filtered_results for skill in job.get("skill_gap", {}).get("strong_skills", [])})
+        skills_to_improve = sorted({skill for job in filtered_results for skill in job.get("skill_gap", {}).get("missing_required_skills", []) + job.get("skill_gap", {}).get("missing_preferred_skills", [])})
+        st.markdown('<div class="cr-section">🎯 Skill Gap Analysis</div>', unsafe_allow_html=True)
+        gap_columns = st.columns(2)
+        with gap_columns[0]:
+            st.markdown(f'<div class="cr-panel cr-skill-card"><div class="cr-skill-card-title">Your strong skills</div>{skill_chips(strong_skills, "good")}</div>', unsafe_allow_html=True)
+        with gap_columns[1]:
+            st.markdown(f'<div class="cr-panel cr-skill-card"><div class="cr-skill-card-title warn">Skills to improve</div>{skill_chips(skills_to_improve, "warn")}</div>', unsafe_allow_html=True)
         st.markdown('<div class="cr-section">Match insights</div>', unsafe_allow_html=True)
         chart_columns = st.columns(2)
         with chart_columns[0]:
@@ -243,4 +269,4 @@ if "recommendation_results" in st.session_state:
                 gap_chart.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", yaxis_title="Jobs", xaxis_title=None)
                 st.plotly_chart(gap_chart, width="stretch")
 
-st.markdown('<div class="cr-footer">CareerRank AI • Explainable &amp; Personalized Job Recommendations</div>', unsafe_allow_html=True)
+st.markdown('<div class="cr-footer"><strong>CareerRank AI</strong>Explainable &amp; Personalized Job Recommendations<br>Built with Python • Sentence Transformers • FAISS • FastAPI • Streamlit</div>', unsafe_allow_html=True)
