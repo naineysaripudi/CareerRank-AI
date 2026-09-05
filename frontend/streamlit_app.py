@@ -14,6 +14,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+from app.core.config import get_settings
+from app.data.loader import load_jobs
 from app.nlp.resume_parser import extract_text_from_pdf_bytes
 from app.services.pipeline import run_demo_recommendation
 
@@ -29,10 +31,13 @@ if uploaded_file:
     except Exception as error:
         st.error(str(error))
 resume_text = st.text_area("Resume text", value=resume_text, height=220, placeholder="Upload a PDF or paste resume text...")
+job_catalog = load_jobs(get_settings().data_path)
+role_options = ["Any Role", *sorted(job_catalog["job_title"].dropna().unique().tolist())]
+location_options = ["Any Location", *sorted(job_catalog["location"].dropna().unique().tolist())]
 left, right = st.columns(2)
 with left:
-    target_role = st.text_input("Target role", "AI Engineer")
-    location = st.text_input("Preferred location", "Remote")
+    target_role = st.selectbox("Target role", role_options, index=role_options.index("AI Engineer"))
+    location = st.selectbox("Preferred location", location_options, index=location_options.index("Remote"))
 with right:
     experience_level = st.selectbox("Experience level", ["", "Entry", "Mid", "Senior"])
     employment_type = st.selectbox("Employment type", ["", "Full-time", "Contract", "Hybrid"])
@@ -40,16 +45,25 @@ additional_skills = st.text_input("Additional skills", placeholder="Docker, AWS"
 
 if st.button("Find my best jobs", type="primary", disabled=not resume_text.strip()):
     with st.spinner("Extracting, retrieving, and ranking..."):
-        results = run_demo_recommendation({"resume_text": resume_text, "target_role": target_role, "location": location, "experience_level": experience_level, "employment_type": employment_type, "additional_skills": [skill.strip() for skill in additional_skills.split(",") if skill.strip()]})
-    st.subheader("Recommendation summary")
-    summary_columns = st.columns(4)
-    summary_columns[0].metric("Jobs analyzed", 100)
-    summary_columns[1].metric("Jobs retrieved", 20)
-    summary_columns[2].metric("Top recommendations", len(results))
-    summary_columns[3].metric("Average match", f"{sum(job['final_score'] for job in results) / max(1, len(results)):.0f}%")
-    result_frame = pd.DataFrame(results)
+        st.session_state.recommendation_results = run_demo_recommendation({
+            "resume_text": resume_text,
+            "target_role": "" if target_role == "Any Role" else target_role,
+            "location": "" if location == "Any Location" else location,
+            "experience_level": experience_level,
+            "employment_type": employment_type,
+            "additional_skills": [skill.strip() for skill in additional_skills.split(",") if skill.strip()],
+        })
+
+if "recommendation_results" in st.session_state:
+    results = st.session_state.recommendation_results
     minimum_score = st.slider("Minimum match score", 0, 100, 0)
     filtered_results = [job for job in results if job["final_score"] >= minimum_score]
+    st.subheader("Recommendation summary")
+    summary_columns = st.columns(4)
+    summary_columns[0].metric("Jobs analyzed", len(job_catalog))
+    summary_columns[1].metric("Jobs retrieved", get_settings().top_k_retrieval)
+    summary_columns[2].metric("Top recommendations", len(filtered_results))
+    summary_columns[3].metric("Average match", f"{sum(job['final_score'] for job in filtered_results) / max(1, len(filtered_results)):.0f}%")
     st.subheader(f"Top {len(filtered_results)} recommendations")
     for job in filtered_results:
         with st.expander(f"#{job['rank']} {job['job_title']} at {job['company']} - {job['final_score']:.0f}% match"):
@@ -58,6 +72,7 @@ if st.button("Find my best jobs", type="primary", disabled=not resume_text.strip
             st.write("**Missing skills:** " + (", ".join(job["missing_skills"]) or "None detected"))
             st.write(job["explanation"]["summary"])
             st.write(job["explanation"]["confidence_note"])
+            result_frame = pd.DataFrame(filtered_results)
     if not result_frame.empty:
         chart_columns = st.columns(2)
         with chart_columns[0]:
