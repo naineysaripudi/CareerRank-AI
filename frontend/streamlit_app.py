@@ -214,11 +214,13 @@ def skill_chips(skills: list[str], style: str) -> str:
 
 if "recommendation_results" in st.session_state:
     results = st.session_state.recommendation_results
+    if "minimum_score" not in st.session_state:
+        st.session_state.minimum_score = 50
     threshold_label, threshold_control = st.columns([.55, 1.45], gap="medium")
     with threshold_label:
-        st.markdown('<div class="cr-panel-title">Minimum Match Score</div><div class="cr-panel-note">Filter ranked jobs by their actual final score.</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="cr-panel-title">Minimum Match Score: {st.session_state.minimum_score}%</div><div class="cr-panel-note">Filter ranked jobs by their actual final score.</div>', unsafe_allow_html=True)
     with threshold_control:
-        minimum_score = st.slider("Minimum Match Score", 0, 100, 0, key="minimum_score", label_visibility="collapsed")
+        minimum_score = st.slider("Minimum Match Score", 0, 100, step=5, key="minimum_score", label_visibility="collapsed")
     filtered_results = [job for job in results if job["final_score"] >= minimum_score]
     average_score = sum(job["final_score"] for job in filtered_results) / max(1, len(filtered_results))
 
